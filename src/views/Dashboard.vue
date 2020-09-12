@@ -4,9 +4,7 @@
     <template v-if="!isLoading">
       <EventCard v-for="event in events" :key="event.id" :event="event" />
     </template>
-    <p v-else>
-      Loading events
-    </p>
+    <p v-else>Loading events</p>
   </div>
 </template>
 
@@ -16,13 +14,13 @@ import EventCard from '../components/EventCard'
 
 export default {
   components: { EventCard },
-  data () {
+  data() {
     return {
       isLoading: true,
       events: []
     }
   },
-  created () {
+  created() {
     axios.get('//localhost:3000/dashboard').then(({ data }) => {
       this.events = data.events.events
       this.isLoading = false
